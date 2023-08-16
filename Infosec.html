@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bruce Banner Cipher Tool</title>
+  <style>
+    
+body {
+  background-color: #00274C;
+  color: #FFFFFF;
+  font-family: Arial, sans-serif;
+  text-align: center; /* align content to center */
+}
+
+/* style for the rest of the elements */
+h1 {
+  font-size: 36px;
+  margin-top: 40px;
+}
+
+p {
+  font-size: 20px;
+}
+
+label {
+  font-size: 20px;
+}
+
+textarea, input[type="number"] {
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  background-color: #FFFFFF;
+  color: #000000;
+  margin-bottom: 16px;
+}
+
+button {
+  font-size: 20px;
+  padding: 12px 24px;
+  border-radius: 5px;
+  border: none;
+  background-color: #2C2C2C;
+  color: #FFFFFF;
+  margin-right: 8px;
+}
+
+button:hover {
+  background-color: #707070;
+}
+
+#encryptButton {
+  background-color: #0C2340;
+}
+
+#decryptButton {
+  background-color: #006DFF;
+}
+
+#copyToClipboardButton {
+  background-color: #666666;
+}
+
+#clearButton {
+  background-color: #FDB913;
+  color: #000000;
+}
+
+#outputField {
+  margin-top: 16px;
+}
+ 
+    /* CSS for the footer */
+footer {
+  background-color: #2C2C2C;
+  color: #FFFFFF;
+  padding: 20px;
+  text-align: center;
+  margin-top: 184px; /* add top margin for spacing */
+}
+
+footer a {
+  color: #FDB913; /* set link color to a distinct yellow */
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+  </style>
+</head>
+<body>
+  <h1>Caesar Cipher Tool</h1>
+  <p>Enter the message you want to encrypt below:</p>
+  <textarea id="inputField" rows="4" cols="50"></textarea>
+  <br>
+  <label for="numbers">Enter the encryption key (0-25):</label>
+  <input type="number" id="numbers" min="0" max="25" value="0">
+  <br>
+  <button id="encryptButton">Encrypt</button>
+  <button id="decryptButton">Decrypt</button>
+  <button id="copyToClipboardButton">Copy to Clipboard</button>
+  <button id="clearButton">Clear</button>
+  <br>
+  <p>Encrypted message:</p>
+  <textarea id="outputField" rows="4" cols="50" readonly></textarea>
+
+  <script>
+    function encrypt(key) {
+      let alphabet = 'abcdefghijklmnopqrstuvwxyz';
+      let alphabetCAP = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+      let user_input = document.getElementById("inputField").value;
+      let new_str = "";
+      
+      if (key < 0 || key > 25) {
+        alert("Invalid key. Please enter a number between 0 and 25.");
+        return;
+      }
+
+      for (let i = 0; i < user_input.length; i++) {
+        letter = user_input[i]
+        if (alphabet.includes(letter)) {
+          new_str += alphabet[((alphabet.indexOf(letter) + Number(key)) % 26)];
+        }
+        else if (alphabetCAP.includes(letter)) {
+          new_str += alphabetCAP[((alphabetCAP.indexOf(letter) + key) % 26)];
+        }
+        else {
+          new_str += letter;
+        }
+      }
+      document.getElementById("outputField").value = new_str;
+    }
+
+    function copyClipboard() {
+      navigator.clipboard.writeText(document.getElementById("output hereerrrrrrrrrField").value);
+      alert("Copied to clipboard!");
+    }
+
+    document.getElementById("encryptButton").addEventListener("click", function() {
+      encrypt(Number(document.getElementById("numbers").value));
+    });
+
+    document.getElementById("decryptButton").addEventListener("click", function() {
+      encrypt(26 - Number(document.getElementById("numbers").value));
+    });
+
+    document.getElementById("copyToClipboardButton").addEventListener("click", copyClipboard);
+
+    document.getElementById("clearButton").addEventListener("click", function() {
+      document.getElementById("inputField").value = "";
+      document.getElementById("outputField").value = "";
+      document.getElementById("numbers").value = "0";
+    });
+  </script>
+  <footer>
+  <p>&copy; 2023 <a href="https://github.com/Oklahoma-City-University/Caesars-Cipher-Tool-for-Chrome-and-Edge"> OCU on Github</a> and <a href="https://nootherjake.com"> @nootherjake</a>. All rights reserved. I created this project as a requirement for my computer science MSc program at Oklahoma City University.</p>
+</footer>
+
+</body>
+</html>
+

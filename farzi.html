@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Food App</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+      
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      
+      .menu-list {
+        list-style: none;
+        padding: 0;
+      }
+      
+      .menu-item {
+        display: flex;
+        margin-bottom: 20px;
+      }
+      
+      .item-image {
+        flex: 0 0 120px;
+        margin-right: 20px;
+      }
+      
+      .item-image img {
+        width: 100%;
+        height: auto;
+      }
+      
+      .item-details {
+        flex: 1;
+      }
+      
+      .item-details h3 {
+        margin-top: 0;
+      }
+      
+      .item-price {
+        font-weight: bold;
+        color: #f00;
+      }
+      
+</style>
+</head>
+<body>
+  <header>
+    <h1>Food App</h1>
+  </header>
+  
+  <main>
+    <div class="container">
+      <h2>Menu</h2>
+      <ul class="menu-list">
+        <li class="menu-item">
+          <div class="item-image">
+            <img src="burger.jpg" alt="Burger">
+          </div>
+          <div class="item-details">
+            <h3>Burger</h3>
+            <p>Delicious beef burger with lettuce and cheese.</p>
+            <span class="item-price">$8.99</span>
+          </div>
+        </li>
+        <li class="menu-item">
+          <div class="item-image">
+            <img src="pizza.jpg" alt="Pizza">
+          </div>
+          <div class="item-details">
+            <h3>Pizza</h3>
+            <p>Classic Margherita pizza with fresh tomatoes and mozzarella.</p>
+            <span class="item-price">$10.99</span>
+          </div>
+        </li>
+        <!-- Add more menu items here -->
+      </ul>
+    </div>
+  </main>
+</body>
+</html>
